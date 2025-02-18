@@ -1,11 +1,11 @@
-name: Build PHP 8.2 for Magento 2
+name: Build PHP 7.4
 
 on:
   workflow_dispatch:
 
 jobs:
   buildx:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,7 +14,6 @@ jobs:
         with:
           host: ${{ secrets.SSH_ARM64_HOST }}
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          private-key-name: ssh-arm64-host
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
@@ -28,7 +27,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v6
         with:
           push: true
-          workdir: php/8.2-magento
+          workdir: php
+          set: |
+            *.args.php_version="7.4.33"
+            *.tags="nosweatframework/php:7.4.33"
+
+

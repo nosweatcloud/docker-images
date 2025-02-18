@@ -1,6 +1,6 @@
 group "default" {
     targets = [
-        "default"
+        "default",
     ]
 }
 target "default" {
@@ -8,10 +8,12 @@ target "default" {
     dockerfile="Dockerfile"
     platforms = [
         "linux/amd64",
-        "linux/arm64"
+        "linux/arm64",
     ]
+    args = {
+        "php_version" = "8.3.17-fpm"
+    }
     tags = [
-        "nosweatframework/php:8.2.13-magento",
-        "nosweatframework/php:8.2-magento"
+        "nosweatframework/php:8.3.17",
     ]
 }
