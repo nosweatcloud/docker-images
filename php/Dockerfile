@@ -17,7 +17,7 @@ RUN /usr/local/bin/install-php-extensions \
     imagick \
     intl \
     mcrypt \
-    mysqlnd \
+    mysqli \
     opcache \
     pcntl \
     pdo_mysql \
@@ -28,8 +28,5 @@ RUN /usr/local/bin/install-php-extensions \
     sysvmsg \
     sysvsem \
     sysvshm \
-    xml \
-    xmlreader \
-    xmlwriter \
     xsl \
     zip
