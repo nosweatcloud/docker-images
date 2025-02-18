@@ -33,7 +33,7 @@ jobs:
           workdir: php
           source: "."
           set: |
-            *.args.php_version="8.0.30"
-            *.tags="nosweatframework/php:8.0.30"
+            *.args.php_version=8.0.30
+            *.tags=nosweatframework/php:8.0.30
 
 
